@@ -14,10 +14,10 @@ get_header();
       <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/GBCA logo large.png" alt="Green Building Council Australia">
     </div>
     <div class="hero-text">
-      <h1>Nature positive roadmap<span>For new developments</span></h1>
-      <p>Setting a vision for new developments to actively contribute towards national and international nature positive efforts, halting and reversing nature loss by 2030.</p>
+      <h1><?php echo esc_html( get_theme_mod( 'hero_title', 'Nature positive roadmap' ) ); ?><span><?php echo esc_html( get_theme_mod( 'hero_subtitle', 'For new developments' ) ); ?></span></h1>
+      <p><?php echo esc_html( get_theme_mod( 'hero_description', 'Setting a vision for new developments to actively contribute towards national and international nature positive efforts, halting and reversing nature loss by 2030.' ) ); ?></p>
       <a href="#roadmap" class="cta-btn">
-        Explore the Roadmap
+        <?php echo esc_html( get_theme_mod( 'hero_cta_text', 'Explore the Roadmap' ) ); ?>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
       </a>
     </div>
@@ -27,39 +27,34 @@ get_header();
 <!-- Stats Bar -->
 <div class="stats-section">
   <div class="stats-bar fade-in">
+    <?php
+    $stat_defaults = array(
+        array( '75%', 'of the world\'s land significantly altered by human activity' ),
+        array( '1M',  'species currently threatened with extinction' ),
+        array( '69%', 'decline in wildlife populations globally since 1970' ),
+        array( '40%', 'of raw material consumption globally from the built environment' ),
+        array( '22%', 'of Australia\'s consumption extinction footprint from construction' ),
+    );
+    for ( $i = 1; $i <= 5; $i++ ) :
+    ?>
     <div class="stat-item">
-      <div class="stat-number">75%</div>
-      <div class="stat-label">of the world's land significantly altered by human activity</div>
+      <div class="stat-number"><?php echo esc_html( get_theme_mod( "stat_{$i}_number", $stat_defaults[ $i - 1 ][0] ) ); ?></div>
+      <div class="stat-label"><?php echo esc_html( get_theme_mod( "stat_{$i}_label", $stat_defaults[ $i - 1 ][1] ) ); ?></div>
     </div>
-    <div class="stat-item">
-      <div class="stat-number">1M</div>
-      <div class="stat-label">species currently threatened with extinction</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">69%</div>
-      <div class="stat-label">decline in wildlife populations globally since 1970</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">40%</div>
-      <div class="stat-label">of raw material consumption globally from the built environment</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-number">22%</div>
-      <div class="stat-label">of Australia's consumption extinction footprint from construction</div>
-    </div>
+    <?php endfor; ?>
   </div>
 </div>
 
 <!-- Acknowledgement of Country -->
 <div class="acknowledgement-section">
-  <p class="ack-heading">Acknowledgement of Country</p>
-  <p>We at the Green Building Council of Australia recognise the Traditional Custodians of Country throughout Australia. We pay our respects to Elders past and present, and recognise their continuous connection to lands, skies and waters. We recognise that Australia&rsquo;s First Peoples have been custodians of this land for tens of thousands of years, and their knowledge and stewardship of Country is central to halting and reversing nature loss.</p>
+  <p class="ack-heading"><?php echo esc_html( get_theme_mod( 'ack_heading', 'Acknowledgement of Country' ) ); ?></p>
+  <p><?php echo wp_kses_post( get_theme_mod( 'ack_text', 'We at the Green Building Council of Australia recognise the Traditional Custodians of Country throughout Australia. We pay our respects to Elders past and present, and recognise their continuous connection to lands, skies and waters. We recognise that Australia&rsquo;s First Peoples have been custodians of this land for tens of thousands of years, and their knowledge and stewardship of Country is central to halting and reversing nature loss.' ) ); ?></p>
 </div>
 
 <!-- Quote -->
 <div class="quote-block">
-  <blockquote>"Our cities, buildings, and infrastructure must do more than minimise harm &mdash; they must actively protect and regenerate biodiversity and ecosystems."</blockquote>
-  <cite>Nature Positive Roadmap for New Developments</cite>
+  <blockquote>&ldquo;<?php echo esc_html( get_theme_mod( 'quote_1_text', 'Our cities, buildings, and infrastructure must do more than minimise harm — they must actively protect and regenerate biodiversity and ecosystems.' ) ); ?>&rdquo;</blockquote>
+  <cite><?php echo esc_html( get_theme_mod( 'quote_1_cite', 'Nature Positive Roadmap for New Developments' ) ); ?></cite>
 </div>
 
 <!-- Purpose & Download -->
@@ -67,20 +62,16 @@ get_header();
   <div class="container">
     <div class="purpose-layout fade-in">
       <div class="purpose-content">
-        <h2>A Framework for Nature Positive Development</h2>
-        <p>The Nature Positive Roadmap for New Developments sets out how new developments can contribute to collective efforts to halt and reverse nature loss.</p>
-        <p>Australia&rsquo;s natural systems are in peril. Land clearing, ecosystem degradation, erosion and sedimentation, spread of pests, altered fire regimes and diseases are key contributors to nature loss. Disconnected planning systems are encroaching into previously undeveloped areas with high biodiversity values and fragmenting ecosystems.</p>
-        <p>This roadmap provides a clear, practical framework to guide decision-making across the built environment. While focused on new developments, the principles can also inform decision-making for existing buildings and precincts.</p>
-        <p>Developed with deep industry engagement and aligned with the Kunming-Montreal Global Biodiversity Framework, the roadmap sets time-bound, measurable targets across five principles. It defines pathways from today through to 2050, covering how we prevent nature loss, increase and connect nature, drive circularity, choose low-impact materials, and invest in nature restoration.</p>
-        <p>The roadmap recognises that Australia&rsquo;s First Peoples have been custodians of this land for tens of thousands of years, and that their knowledge and stewardship of Country is central to achieving nature positive outcomes.</p>
+        <h2><?php echo esc_html( get_theme_mod( 'purpose_title', 'A Framework for Nature Positive Development' ) ); ?></h2>
+        <?php echo wp_kses_post( get_theme_mod( 'purpose_text', '<p>The Nature Positive Roadmap for New Developments sets out how new developments can contribute to collective efforts to halt and reverse nature loss.</p><p>Australia&rsquo;s natural systems are in peril. Land clearing, ecosystem degradation, erosion and sedimentation, spread of pests, altered fire regimes and diseases are key contributors to nature loss. Disconnected planning systems are encroaching into previously undeveloped areas with high biodiversity values and fragmenting ecosystems.</p><p>This roadmap provides a clear, practical framework to guide decision-making across the built environment. While focused on new developments, the principles can also inform decision-making for existing buildings and precincts.</p><p>Developed with deep industry engagement and aligned with the Kunming-Montreal Global Biodiversity Framework, the roadmap sets time-bound, measurable targets across five principles. It defines pathways from today through to 2050, covering how we prevent nature loss, increase and connect nature, drive circularity, choose low-impact materials, and invest in nature restoration.</p><p>The roadmap recognises that Australia&rsquo;s First Peoples have been custodians of this land for tens of thousands of years, and that their knowledge and stewardship of Country is central to achieving nature positive outcomes.</p>' ) ); ?>
       </div>
       <div>
         <div class="purpose-cover">
           <img src="<?php echo esc_url( get_template_directory_uri() ); ?>/images/Roadmap Cover.png" alt="Nature Positive Roadmap for New Developments">
         </div>
         <div class="purpose-download">
-          <h4>Download the Roadmap</h4>
-          <p>Get the full Nature Positive Roadmap for New Developments PDF. Enter your details below to download.</p>
+          <h4><?php echo esc_html( get_theme_mod( 'purpose_download_title', 'Download the Roadmap' ) ); ?></h4>
+          <p><?php echo esc_html( get_theme_mod( 'purpose_download_desc', 'Get the full Nature Positive Roadmap for New Developments PDF. Enter your details below to download.' ) ); ?></p>
           <form class="purpose-form" id="downloadForm" onsubmit="handleDownload(event)">
             <input type="text" name="firstName" placeholder="First name" required>
             <input type="text" name="lastName" placeholder="Last name" required>
@@ -102,8 +93,8 @@ get_header();
   <div class="container">
     <div class="section-header fade-in">
       <div class="section-label">Policy Context</div>
-      <h2>The Changing Landscape</h2>
-      <p>Australia's environmental policy settings are being reshaped within a global shift toward stronger nature protection. Click any event to explore its significance.</p>
+      <h2><?php echo esc_html( get_theme_mod( 'section_policy_title', 'The Changing Landscape' ) ); ?></h2>
+      <p><?php echo esc_html( get_theme_mod( 'section_policy_desc', 'Australia\'s environmental policy settings are being reshaped within a global shift toward stronger nature protection. Click any event to explore its significance.' ) ); ?></p>
     </div>
 
     <div class="tl-col-headings fade-in">
@@ -341,8 +332,8 @@ get_header();
   <div class="container">
     <div class="section-header fade-in">
       <div class="section-label">Challenge &amp; Response</div>
-      <h2>From Barriers to Principles</h2>
-      <p>The built environment faces deep systemic challenges. This roadmap responds to each with a clear principle for action. Click any item to explore the detail.</p>
+      <h2><?php echo esc_html( get_theme_mod( 'section_challenge_title', 'From Barriers to Principles' ) ); ?></h2>
+      <p><?php echo esc_html( get_theme_mod( 'section_challenge_desc', 'The built environment faces deep systemic challenges. This roadmap responds to each with a clear principle for action. Click any item to explore the detail.' ) ); ?></p>
     </div>
 
     <div class="cr-grid fade-in">
@@ -659,7 +650,7 @@ get_header();
   <div class="container">
     <div class="section-header fade-in">
       <div class="section-label">The Roadmap</div>
-      <h2>Nature Positive Targets &amp; Pathways</h2>
+      <h2><?php echo esc_html( get_theme_mod( 'section_roadmap_title', 'Nature Positive Targets & Pathways' ) ); ?></h2>
       <p>The roadmap sets time-bound, measurable targets across five principles. Click any target to see what needs to happen, what GBCA is doing, and what industry needs to deliver.</p>
     </div>
     <p class="irm-hero-subtitle">Aligned with the Kunming-Montreal Global Biodiversity Framework</p>
@@ -820,8 +811,8 @@ get_header();
   <div class="container">
     <div class="section-header fade-in">
       <div class="section-label">The Next 5 Years</div>
-      <h2>Actions for Success</h2>
-      <p>30 interconnected actions across three phases chart the path to a nature positive built environment. Hover any action to see its full description and trace the dependency chain that connects it to the broader roadmap.</p>
+      <h2><?php echo esc_html( get_theme_mod( 'section_actions_title', 'Actions for Success' ) ); ?></h2>
+      <p><?php echo esc_html( get_theme_mod( 'section_actions_desc', '30 interconnected actions across three phases chart the path to a nature positive built environment. Hover any action to see its full description and trace the dependency chain that connects it to the broader roadmap.' ) ); ?></p>
     </div>
 
     <div class="an-phase-legend fade-in">
@@ -1112,8 +1103,8 @@ get_header();
   <div class="container">
     <div class="section-header fade-in">
       <div class="section-label" style="background:rgba(255,255,255,0.15);color:var(--green-pale)">Enablers of Success</div>
-      <h2 style="color:white">System-Wide Enablers</h2>
-      <p style="color:rgba(255,255,255,0.75)">These enablers address the system gaps that limit progress and support the consistent application of the principles.</p>
+      <h2 style="color:white"><?php echo esc_html( get_theme_mod( 'section_enablers_title', 'System-Wide Enablers' ) ); ?></h2>
+      <p style="color:rgba(255,255,255,0.75)"><?php echo esc_html( get_theme_mod( 'section_enablers_desc', 'These enablers address the system gaps that limit progress and support the consistent application of the principles.' ) ); ?></p>
     </div>
     <div class="enablers-grid fade-in">
       <div class="enabler-card">
@@ -1135,8 +1126,8 @@ get_header();
   <div class="container">
     <div class="section-header fade-in">
       <div class="section-label">Case Studies</div>
-      <h2>Nature Positive in Practice</h2>
-      <p>Leading Australian projects demonstrating how the built environment can protect, restore and enhance nature.</p>
+      <h2><?php echo esc_html( get_theme_mod( 'section_casestudies_title', 'Nature Positive in Practice' ) ); ?></h2>
+      <p><?php echo esc_html( get_theme_mod( 'section_casestudies_desc', 'Leading Australian projects demonstrating how the built environment can protect, restore and enhance nature.' ) ); ?></p>
     </div>
     <div class="case-carousel fade-in">
       <div class="case-carousel-card">
@@ -1204,8 +1195,8 @@ get_header();
   <div class="container">
     <div class="section-header fade-in">
       <div class="section-label">TNFD Alignment</div>
-      <h2>How to Use the Roadmap for TNFD Reporting</h2>
-      <p>The roadmap aligns with the Taskforce on Nature-related Financial Disclosures (TNFD) LEAP framework. Follow these six steps to integrate nature-related disclosure into your projects.</p>
+      <h2><?php echo esc_html( get_theme_mod( 'section_tnfd_title', 'How to Use the Roadmap for TNFD Reporting' ) ); ?></h2>
+      <p><?php echo esc_html( get_theme_mod( 'section_tnfd_desc', 'The roadmap aligns with the Taskforce on Nature-related Financial Disclosures (TNFD) LEAP framework. Follow these six steps to integrate nature-related disclosure into your projects.' ) ); ?></p>
     </div>
     <div class="tnfd-steps-grid fade-in">
       <div class="tnfd-step">
@@ -1247,8 +1238,8 @@ get_header();
   <div class="container">
     <div class="section-header fade-in">
       <div class="section-label">Green Star</div>
-      <h2>Green Star's Nature Positive Pathway</h2>
-      <p>Green Star provides a common framework for standards and assurance pathways to include nature in new developments.</p>
+      <h2><?php echo esc_html( get_theme_mod( 'section_greenstar_title', 'Green Star\'s Nature Positive Pathway' ) ); ?></h2>
+      <p><?php echo esc_html( get_theme_mod( 'section_greenstar_desc', 'Green Star provides a common framework for standards and assurance pathways to include nature in new developments.' ) ); ?></p>
     </div>
     <div class="greenstar-grid fade-in">
       <div class="gs-card">
@@ -1298,8 +1289,8 @@ get_header();
   <div class="container">
     <div class="section-header fade-in">
       <div class="section-label">GBCA's Role</div>
-      <h2>Delivering Nature Positive Outcomes</h2>
-      <p>GBCA will lead the sustainable transformation through four strategic pillars.</p>
+      <h2><?php echo esc_html( get_theme_mod( 'section_gbcarole_title', 'Delivering Nature Positive Outcomes' ) ); ?></h2>
+      <p><?php echo esc_html( get_theme_mod( 'section_gbcarole_desc', 'GBCA will lead the sustainable transformation through four strategic pillars.' ) ); ?></p>
     </div>
     <div class="gbca-pillars fade-in">
       <div class="pillar-card">
@@ -1331,8 +1322,8 @@ get_header();
   <div class="container">
     <div class="section-header fade-in">
       <div class="section-label">Take Action</div>
-      <h2>Your Role in a Nature Positive Built Environment</h2>
-      <p>From investment and governance through to planning, design, delivery and long-term ownership, decisions at every stage influence nature outcomes.</p>
+      <h2><?php echo esc_html( get_theme_mod( 'section_takeaction_title', 'Your Role in a Nature Positive Built Environment' ) ); ?></h2>
+      <p><?php echo esc_html( get_theme_mod( 'section_takeaction_desc', 'From investment and governance through to planning, design, delivery and long-term ownership, decisions at every stage influence nature outcomes.' ) ); ?></p>
     </div>
 
     <div class="tabs fade-in">
@@ -1428,8 +1419,8 @@ get_header();
 
 <!-- Call to Action -->
 <div class="quote-block" style="padding: 5rem 2rem;">
-  <blockquote style="font-size: 1.6rem;">"Nature is being lost at a scale and speed unprecedented in human history. The choices made now will determine whether future places continue to drive nature loss or actively contribute to nature's recovery."</blockquote>
-  <cite>Nature Positive Roadmap for New Developments, GBCA</cite>
+  <blockquote style="font-size: 1.6rem;">&ldquo;<?php echo esc_html( get_theme_mod( 'quote_2_text', 'Nature is being lost at a scale and speed unprecedented in human history. The choices made now will determine whether future places continue to drive nature loss or actively contribute to nature\'s recovery.' ) ); ?>&rdquo;</blockquote>
+  <cite><?php echo esc_html( get_theme_mod( 'quote_2_cite', 'Nature Positive Roadmap for New Developments, GBCA' ) ); ?></cite>
   <div style="margin-top: 2rem;">
     <a href="#principles" class="cta-btn" style="background:var(--green-mid);color:white;">
       Explore the Principles
